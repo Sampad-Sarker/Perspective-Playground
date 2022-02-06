@@ -1,0 +1,77 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <title>Perspective Playground</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+
+  <body>
+    <div id="app" v-cloak>
+      
+      <h2>Perspective Playground</h2>
+      <main>
+        <section class="settings">
+          <div class="settings-container">
+            <label>color-code: {{color.toUpperCase()}}</label>
+            <input type="color" v-model="color" />
+
+            <label>width: {{width}}px </label>
+            <input type="range" min="10" max="300" v-model="width" />
+
+            <label>height: {{height}}px </label>
+            <input type="range" min="10" max="300" v-model="height" />
+
+            <label>perspective: {{perspective}}px</label>
+            <input type="range" min="0" max="999" v-model="perspective" />
+
+            <label>rotateX: {{rotateX}}deg </label>
+            <input type="range" min="-180" max="180" v-model="rotateX" />
+
+            <label>rotateY: {{rotateY}}deg </label>
+            <input type="range" min="-180" max="180" v-model="rotateY" />
+
+            <label>rotateZ: {{rotateZ}}deg </label>
+            <input type="range" min="0" max="360" v-model="rotateZ" />
+
+            <button type="button" @click.prevent="reset">Reset</button>
+            <button type="button" @click.prevent="copy">Copy</button>
+          </div>
+        </section>
+        <section class="output">
+          <div class="box-container">
+            <!-- <div
+              class="box"
+              :style="{backgroundColor:color,transform:`perspective(${perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`
+              
+            }"
+            ></div> -->
+            <div class="box" :style="boxStyle"></div>
+          </div>
+        </section>
+      </main>
+      <div class="footer">
+        <p>
+          Developed by
+          <a href="https://twitter.com/SampadSarker" target="_blank"
+            >SampadSarker</a
+          >
+          with 🧡
+        </p>
+      </div>
+    </div>
+
+    <css-doodle>
+      :doodle { @grid: 1x3 / 100vmax; position: absolute; top: 0; left: 0;
+      z-index: 0; } @size: 100% 150%; position: absolute; background: @m(100, (
+      linear-gradient(transparent, @p( #FFFDE1@repeat(2, @p([0-9a-f])),
+      #FB3569@repeat(2, @p([0-9a-f])) )) @r(0%, 100%) @r(0%, 100%) / @r(1px)
+      @r(23vmin) no-repeat )); will-change: transform; animation: f 50s linear
+      calc(-50s / @size() * @i()) infinite; @keyframes f { from { transform:
+      translateY(-100%) } to { transform: translateY(100%) } }
+    </css-doodle>
+
+    <script src="https://unpkg.com/css-doodle@0.6.1/css-doodle.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
