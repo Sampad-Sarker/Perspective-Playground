@@ -88,3 +88,6 @@ label {
   background-color: #726060;
   text-align: center;
 }
+.anime {
+  display: inline-block;
+}
